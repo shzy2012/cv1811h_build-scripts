@@ -1,0 +1,39 @@
+/*
+ * U-Boot uImage source file for "rCore-tutorial-CV1811H"
+ */
+
+/dts-v1/;
+
+/ {
+    description = "U-Boot uImage source file for rCore-tutorial CV1811H";
+    #address-cells = <1>;
+
+    images {
+        kernel {
+            description = "Linux kernel for rCore-tutorial";
+            data = /incbin/("os.bin.gz");
+            type = "kernel";
+            arch = "riscv";
+            os = "linux";
+            compression = "gzip";
+            load = <0x80200000>;
+            entry = <0x80200000>;
+        };
+        fdt {
+            description = "Flattened Device Tree blob for CV1811H";
+            data = /incbin/("cv1811h.dtb");
+            type = "flat_dt";
+            arch = "riscv";
+            compression = "none";
+        };
+    };
+
+    configurations {
+        default = "conf";
+        conf {
+            description = "Boot Linux kernel with FDT blob";
+            kernel = "kernel";
+            fdt = "fdt";
+        };
+    };
+};
