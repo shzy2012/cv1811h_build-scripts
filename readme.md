@@ -3,7 +3,7 @@
 目录介绍
 ```
 cv1811h_board.md：开发板操作说明
-cv1811h.dts：设备树源文件
+cv1811h.dts：设备树源文件(通用文件)
 
 os_build.sh：生成OS端编译所需指令
 os.its：设备源代码
